@@ -40,3 +40,62 @@
 .jump {
     animation: jump 0.8s infinite;
 }
+
+@keyframes openLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.openLeft {
+    animation: openLeft 1s forwards;
+}
+@keyframes openRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.openRight {
+    animation: openRight 1s forwards;
+}
+
+.falling-flowers {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+.flower {
+    position: absolute;
+    top: -60px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.8;
+    animation: fall 6s linear infinite;
+    animation-delay: calc(-6s * var(--i, 0) / 10);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 0.8;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) scale(0.8);
+        opacity: 0.2;
+    }
+}

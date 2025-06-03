@@ -1,3 +1,21 @@
+<div class="relative">
+    <div
+        class="openLeft absolute top-0 z-2 h-screen w-1/2 bg-[url('/Wedding-Images/letter-background.jpg')] shadow-xl/30"></div>
+    <div
+        class="openRight absolute top-0 right-0 z-1 h-screen w-2/3 bg-[url('/Wedding-Images/letter-background.jpg')]"></div>
+</div>
+
+<div class="falling-flowers">
+    <img
+        *ngFor="let n of [].constructor(10); let i = index"
+        class="flower"
+        [style.left.%]="i * 10 + Math.random() * 5"
+        [style.animationDuration]="5 + Math.random() * 3 + 's'"
+        [style.animationDelay]="Math.random() * 5 + 's'"
+        src="Wedding-Images/flower.png"
+        alt="flower" />
+</div>
+
 <div
     class="relative h-screen w-full bg-cover bg-center"
     style="background-image: url('./Wedding-Images/NTU01453.jpg')">
@@ -14,7 +32,7 @@
     </div>
 </div>
 
-<div class="bg-(--Soft-Peach) py-12 text-(--Deep-Navy)">
+<div class="py-12 text-(--Deep-Navy)">
     <h1 class="text-center font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
     <div class="py-10">
         <div class="text-center">Được tổ chức vào lúc</div>
@@ -120,7 +138,7 @@
     </div>
 </div>
 
-<div class="h-screen bg-(--Soft-Peach) pt-6 text-(--Deep-Navy)">
+<div class="h-screen pt-6 text-(--Deep-Navy)">
     <h1 class="text-2xl">About Us</h1>
     <div>bla bla bla</div>
 

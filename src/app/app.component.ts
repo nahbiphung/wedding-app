@@ -1,4 +1,4 @@
-import { NgStyle } from '@angular/common';
+import { NgFor, NgStyle } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NumberPadPipe } from './shared/pipes/number-pad.pipe';
 
@@ -6,11 +6,12 @@ import { NumberPadPipe } from './shared/pipes/number-pad.pipe';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [NgStyle, NumberPadPipe],
+    imports: [NgStyle, NumberPadPipe, NgFor],
 })
 export class AppComponent implements OnInit, OnDestroy {
     title = 'wedding-app';
 
+    Math = Math;
     targetDate = '2025-12-13';
     countdown = { hours: 0, minutes: 0, seconds: 0 };
     private intervalId: any;

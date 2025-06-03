@@ -58,4 +58,10 @@ export class AppComponent implements OnInit, OnDestroy {
             this.countdown = { hours: 0, minutes: 0, seconds: 0 };
         }
     }
+
+    flowers = Array.from({ length: 10 }).map((_, i) => ({
+        left: i * 10 + Math.random() * 5,
+        duration: 5 + Math.random() * 3,
+        delay: Math.random() * 5,
+    }));
 }

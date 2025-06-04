@@ -38,18 +38,19 @@ export class AppComponent implements OnInit, OnDestroy {
         this.wishFirebaseService.getWishes().subscribe((wishes) => {
             console.log('Fetch wishes from firebase:', wishes);
             this.wishService.wishes.set(wishes);
+
+            setTimeout(() => this.scrollToBottom(), 0);
         });
     }
 
     ngAfterViewInit() {
-        this.audioPlayer?.nativeElement.play().catch(() => {
-            // Autoplay might be blocked by browser
-        });
-        this.scrollToBottom();
-    }
+        const audio = this.audioPlayer.nativeElement;
 
-    ngAfterViewChecked() {
-        this.scrollToBottom();
+        console.log('Audio element:', audio);
+        audio.play().catch(() => {
+            // Autoplay might be blocked by browser
+            this.isSpinning = false;
+        });
     }
 
     flowers = Array.from({ length: 10 }).map((_, i) => ({
@@ -62,7 +63,9 @@ export class AppComponent implements OnInit, OnDestroy {
         const audio = this.audioPlayer?.nativeElement;
         if (audio) {
             if (audio.paused) {
-                audio.play().catch(() => {});
+                audio.play().catch(() => {
+                    // Autoplay might be blocked by browser
+                });
             } else {
                 audio.pause();
             }

@@ -15,11 +15,13 @@ export class AppComponent implements OnInit, OnDestroy {
     title = 'wedding-app';
 
     wish: string = '';
+    isSpinning = true;
 
     Math = Math;
     targetDate = '2025-12-13';
     countdown = { hours: 0, minutes: 0, seconds: 0 };
 
+    @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
     @ViewChild('wishesContainer') wishesContainer!: ElementRef<HTMLDivElement>;
 
     private intervalId: any;
@@ -40,6 +42,9 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     ngAfterViewInit() {
+        this.audioPlayer?.nativeElement.play().catch(() => {
+            // Autoplay might be blocked by browser
+        });
         this.scrollToBottom();
     }
 
@@ -52,6 +57,17 @@ export class AppComponent implements OnInit, OnDestroy {
         duration: 5 + Math.random() * 3,
         delay: Math.random() * 5,
     }));
+
+    toggleAudio() {
+        const audio = this.audioPlayer?.nativeElement;
+        if (audio) {
+            if (audio.paused) {
+                audio.play().catch(() => {});
+            } else {
+                audio.pause();
+            }
+        }
+    }
 
     getDaysLeft(): number {
         const today = new Date();

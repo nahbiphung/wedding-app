@@ -101,3 +101,17 @@
         opacity: 0.2;
     }
 }
+
+.circle-text-spin {
+    animation: spin 10s linear infinite;
+    transform-origin: 50% 50%;
+    display: block;
+}
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.circle-text-svg {
+    pointer-events: none;
+}

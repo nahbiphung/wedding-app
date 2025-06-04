@@ -1,8 +1,51 @@
-<div class="relative">
+<div class="relative z-10">
     <div
         class="openLeft absolute top-0 z-2 h-screen w-1/2 bg-[url('/Wedding-Images/letter-background.jpg')] bg-cover shadow-xl/30"></div>
     <div
         class="openRight absolute top-0 right-0 z-1 h-screen w-2/3 bg-[url('/Wedding-Images/letter-background.jpg')] bg-cover"></div>
+</div>
+
+<div class="fixed top-4 right-4 z-9">
+    <audio
+        class="hidden"
+        #audioPlayer
+        src="Wedding-audio/ChiCanCoNhau-VuCatTuong-16132123.mp3"
+        loop></audio>
+    <svg
+        viewBox="0 0 60 60"
+        width="60"
+        height="60"
+        [class.circle-text-spin]="isSpinning"
+        class="circle-text-svg select-none">
+        <defs>
+            <path
+                id="circlePath"
+                d="M 30, 30
+                       m -24, 0
+                       a 24,24 0 1,1 48,0
+                       a 24,24 0 1,1 -48,0" />
+        </defs>
+        <text
+            font-size="5"
+            fill="#b77b3b"
+            font-family="cursive">
+            <textPath
+                xlink:href="#circlePath"
+                startOffset="0%">
+                Oai & Như • Oai & Như • Oai & Như • Oai & Như • Oai & Như •
+            </textPath>
+        </text>
+    </svg>
+    <button
+        (click)="isSpinning = !isSpinning"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-amber-300 transition"
+        style="outline: none; border: none">
+        <span
+            class="material-icons py-1 text-4xl text-amber-700"
+            (click)="toggleAudio()">
+            {{ isSpinning ? 'pause_circle' : 'play_circle' }}
+        </span>
+    </button>
 </div>
 
 <div class="falling-flowers">
@@ -33,15 +76,16 @@
     </div>
 
     <div class="py-12 text-(--Primary)">
-        <h1 class="mb-4 text-center font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
-        <hr class="m-auto my-4 w-2/3 border-2" />
-        <div class="text-center font-(family-name:--Hello-honey) text-5xl">17:30 - Thứ 7</div>
-        <div class="shake text-center font-(family-name:--Hello-honey) text-6xl">
-            13 . 12 . 2025
-        </div>
-        <div class="text-center text-xl text-(--Primary)">
-            {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
-            {{ countdown.seconds | numberPad }}
+        <div class="flex flex-col items-center">
+            <h1 class="mb-4 font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
+            <div>Được tổ chức vào lúc</div>
+            <hr class="m-auto my-4 w-2/3 border-2" />
+            <div class="font-(family-name:--Hello-honey) text-5xl">17:30 - Thứ 7</div>
+            <div class="shake font-(family-name:--Hello-honey) text-6xl">13 . 12 . 2025</div>
+            <div class="text-xl text-(--Primary)">
+                {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
+                {{ countdown.seconds | numberPad }}
+            </div>
         </div>
 
         <div class="p-4">
@@ -139,7 +183,7 @@
         <div class="flex flex-col gap-4">
             <div
                 #wishesContainer
-                class="h-[200px] min-h-[200px] w-full overflow-auto rounded-lg border-2">
+                class="h-[200px] min-h-[200px] w-full overflow-auto rounded-lg border-2 bg-[#fde1b16b]">
                 @for (wish of wishService.wishes(); track wish.id; let idx = $index) {
                     <div class="my-2 px-2 py-1">
                         <div class="text-xs italic text-shadow-amber-900">
@@ -157,7 +201,7 @@
                 <input
                     required
                     type="text"
-                    class="w-full rounded-lg border-2 p-2"
+                    class="w-full rounded-lg border-2 bg-[#fde1b16b] p-2"
                     [(ngModel)]="wish"
                     name="wish"
                     placeholder="Nhập lời chúc" />

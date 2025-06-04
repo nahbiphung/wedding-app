@@ -1,15 +1,18 @@
 import { NgFor, NgStyle } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NumberPadPipe } from './shared/pipes/number-pad.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    imports: [NgStyle, NumberPadPipe, NgFor],
+    styleUrl: './app.component.css',
+    imports: [NgStyle, NumberPadPipe, NgFor, FormsModule],
 })
 export class AppComponent implements OnInit, OnDestroy {
     title = 'wedding-app';
+
+    wish: string = '';
 
     Math = Math;
     targetDate = '2025-12-13';

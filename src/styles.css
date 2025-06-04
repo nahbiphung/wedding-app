@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+
+:root {
+    --Dearly-loved-one: 'Dearly-loved-one', Arial, sans-serif;
+    --Hello-honey: 'Hello-honey', Arial, sans-serif;
+    --Mentawai: 'Mentawai', Arial, sans-serif;
+    --DonnaSmith: 'DonnaSmith', Arial, sans-serif;
+
+    --Soft-Peach: #ffdab9;
+
+    --Golden-Sand: #f4e1c1;
+
+    --Primary: #3d3730;
+
+    --Soft-White: #f8f8f8;
+
+    --Muted-Coral: #ff9999;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}

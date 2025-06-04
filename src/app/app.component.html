@@ -23,17 +23,17 @@
         <div
             class="absolute top-16 w-full text-center font-(family-name:--Hello-honey) text-(--Soft-White)">
             <div>
-                <div class="font-(family-name:--Dearly-loved-one) text-(--Deep-Navy)">
+                <div class="font-(family-name:--Dearly-loved-one) text-(--Primary)">
                     We’re Getting Married!
                 </div>
                 <div class="bg-[#e9d8c436] text-8xl">Oai <span class="text-4xl">❤</span> Như</div>
-                <div class="shake text-6xl text-(--Deep-Navy)">13 . 12 . 2025</div>
-                <div class="text-2xl text-(--Deep-Navy)">{{ getDaysLeft() }} days left</div>
+                <div class="shake text-6xl text-(--Primary)">13 . 12 . 2025</div>
+                <div class="text-2xl text-(--Primary)">{{ getDaysLeft() }} days left</div>
             </div>
         </div>
     </div>
 
-    <div class="py-12 text-(--Deep-Navy)">
+    <div class="py-12 text-(--Primary)">
         <h1 class="mb-4 text-center font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
         <div class="text-center">Được tổ chức vào lúc</div>
         <hr class="m-auto my-4 w-2/3 border-2" />
@@ -41,7 +41,7 @@
         <div class="shake text-center font-(family-name:--Hello-honey) text-6xl">
             13 . 12 . 2025
         </div>
-        <div class="text-center text-xl text-(--Deep-Navy)">
+        <div class="text-center text-xl text-(--Primary)">
             {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
             {{ countdown.seconds | numberPad }}
         </div>
@@ -114,7 +114,7 @@
             <div class="px-4">338 Đ. Trần Hưng Đạo, Phường 11, Quận 5, Hồ Chí Minh</div>
             <div class="my-6 flex justify-center text-2xl">
                 <div
-                    class="flex items-center justify-center border-2 p-3"
+                    class="flex items-center justify-center rounded-lg border-2 p-3"
                     (click)="openMap()">
                     <span
                         [ngStyle]="{ 'font-size': '42px' }"
@@ -134,6 +134,23 @@
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <div class="px-4 text-(--Primary)">
+        <div class="flex flex-col gap-4">
+            <input
+                required
+                type="text"
+                class="w-full rounded-lg border-2 p-2"
+                [(ngModel)]="wish"
+                placeholder="Nhập lời chúc" />
+
+            <button
+                class="ml-auto w-1/4 rounded-full bg-(--Primary) py-2 text-(--Soft-White)"
+                type="submit">
+                Gửi
+            </button>
         </div>
     </div>
 </div>

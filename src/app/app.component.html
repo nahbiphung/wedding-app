@@ -20,9 +20,8 @@
     <div
         class="relative h-screen w-full bg-cover bg-center"
         style="background-image: url('./Wedding-Images/NTU01453.jpg')">
-        <div
-            class="absolute top-16 w-full text-center font-(family-name:--Hello-honey) text-(--Soft-White)">
-            <div>
+        <div class="absolute top-16 w-full font-(family-name:--Hello-honey) text-(--Soft-White)">
+            <div class="flex flex-col items-center">
                 <div class="font-(family-name:--Dearly-loved-one) text-(--Primary)">
                     We’re Getting Married!
                 </div>
@@ -34,16 +33,16 @@
     </div>
 
     <div class="py-12 text-(--Primary)">
-        <h1 class="mb-4 text-center font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
-        <div class="text-center">Được tổ chức vào lúc</div>
-        <hr class="m-auto my-4 w-2/3 border-2" />
-        <div class="text-center font-(family-name:--Hello-honey) text-5xl">17:30 - Thứ 7</div>
-        <div class="shake text-center font-(family-name:--Hello-honey) text-6xl">
-            13 . 12 . 2025
-        </div>
-        <div class="text-center text-xl text-(--Primary)">
-            {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
-            {{ countdown.seconds | numberPad }}
+        <div class="flex flex-col items-center">
+            <h1 class="mb-4 font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
+            <div>Được tổ chức vào lúc</div>
+            <hr class="m-auto my-4 w-2/3 border-2" />
+            <div class="font-(family-name:--Hello-honey) text-5xl">17:30 - Thứ 7</div>
+            <div class="shake font-(family-name:--Hello-honey) text-6xl">13 . 12 . 2025</div>
+            <div class="text-xl text-(--Primary)">
+                {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
+                {{ countdown.seconds | numberPad }}
+            </div>
         </div>
 
         <div class="p-4">
@@ -139,18 +138,35 @@
 
     <div class="px-4 text-(--Primary)">
         <div class="flex flex-col gap-4">
-            <input
-                required
-                type="text"
-                class="w-full rounded-lg border-2 p-2"
-                [(ngModel)]="wish"
-                placeholder="Nhập lời chúc" />
+            <div class="h-[200px] min-h-[200px] w-full overflow-auto rounded-lg border-2">
+                @for (wish of wishService.wishes(); track wish.id; let idx = $index) {
+                    <div class="my-2 px-2 py-1">
+                        <div class="text-xs italic text-shadow-amber-900">
+                            {{ wish?.createdAt?.toDate() | date: 'short' }}
+                        </div>
+                        <div>{{ wish?.text }}</div>
+                    </div>
+                }
+            </div>
 
-            <button
-                class="ml-auto w-1/4 rounded-full bg-(--Primary) py-2 text-(--Soft-White)"
-                type="submit">
-                Gửi
-            </button>
+            <form
+                #wishForm="ngForm"
+                (ngSubmit)="sendWish()">
+                <input
+                    required
+                    type="text"
+                    class="w-full rounded-lg border-2 p-2"
+                    [(ngModel)]="wish"
+                    name="wish"
+                    placeholder="Nhập lời chúc" />
+
+                <button
+                    class="ml-auto w-1/4 rounded-full bg-(--Primary) py-2 text-(--Soft-White)"
+                    type="submit"
+                    (click)="sendWish()">
+                    Gửi
+                </button>
+            </form>
         </div>
     </div>
 </div>

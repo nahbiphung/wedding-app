@@ -1,13 +1,15 @@
-import { NgFor, NgStyle } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule, DatePipe, NgFor, NgStyle } from '@angular/common';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { NumberPadPipe } from './shared/pipes/number-pad.pipe';
 import { FormsModule } from '@angular/forms';
+import { WishService } from './wish.service';
+import { WishFirebaseService } from './wish-firebase.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [NgStyle, NumberPadPipe, NgFor, FormsModule],
+    imports: [NgStyle, NumberPadPipe, NgFor, FormsModule, DatePipe],
 })
 export class AppComponent implements OnInit, OnDestroy {
     title = 'wedding-app';
@@ -17,14 +19,29 @@ export class AppComponent implements OnInit, OnDestroy {
     Math = Math;
     targetDate = '2025-12-13';
     countdown = { hours: 0, minutes: 0, seconds: 0 };
+
     private intervalId: any;
+
+    readonly wishService = inject(WishService);
+    private readonly wishFirebaseService = inject(WishFirebaseService);
 
     ngOnInit() {
         this.updateCountdown(this.targetDate);
         this.intervalId = setInterval(() => {
             this.updateCountdown(this.targetDate);
         }, 1000);
+
+        this.wishFirebaseService.getWishes().subscribe((wishes) => {
+            console.log('Fetch wishes from firebase:', wishes);
+            this.wishService.wishes.set(wishes);
+        });
     }
+
+    flowers = Array.from({ length: 10 }).map((_, i) => ({
+        left: i * 10 + Math.random() * 5,
+        duration: 5 + Math.random() * 3,
+        delay: Math.random() * 5,
+    }));
 
     getDaysLeft(): number {
         const today = new Date();
@@ -39,6 +56,19 @@ export class AppComponent implements OnInit, OnDestroy {
             '_blank'
         );
     };
+
+    sendWish() {
+        if (!this.wish.trim()) {
+            this.wish = '';
+            return;
+        }
+
+        this.wishFirebaseService.addWish(this.wish).subscribe((id) => {
+            console.log('new wish created with id:', id);
+
+            this.wish = '';
+        });
+    }
 
     ngOnDestroy() {
         if (this.intervalId) {
@@ -61,10 +91,4 @@ export class AppComponent implements OnInit, OnDestroy {
             this.countdown = { hours: 0, minutes: 0, seconds: 0 };
         }
     }
-
-    flowers = Array.from({ length: 10 }).map((_, i) => ({
-        left: i * 10 + Math.random() * 5,
-        duration: 5 + Math.random() * 3,
-        delay: Math.random() * 5,
-    }));
 }

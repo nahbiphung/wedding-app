@@ -18,6 +18,8 @@
         "@angular/platform-browser-dynamic": "^19.2.0",
         "@angular/router": "^19.2.0",
         "@tailwindcss/postcss": "^4.1.8",
+        "@angular/fire": "19.2.0",
+        "firebase": "^11.8.0",
         "gsap": "^3.13.0",
         "postcss": "^8.5.4",
         "rxjs": "~7.8.0",

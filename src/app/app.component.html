@@ -16,7 +16,7 @@
         alt="flower" />
 </div>
 
-<div class="bg-(--Golden-Sand) bg-cover">
+<div class="bg-[url('/Wedding-Images/veinstone.jpg')] bg-cover">
     <div
         class="relative h-screen w-full bg-cover bg-center"
         style="background-image: url('./Wedding-Images/NTU01453.jpg')">
@@ -33,16 +33,15 @@
     </div>
 
     <div class="py-12 text-(--Primary)">
-        <div class="flex flex-col items-center">
-            <h1 class="mb-4 font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
-            <div>Được tổ chức vào lúc</div>
-            <hr class="m-auto my-4 w-2/3 border-2" />
-            <div class="font-(family-name:--Hello-honey) text-5xl">17:30 - Thứ 7</div>
-            <div class="shake font-(family-name:--Hello-honey) text-6xl">13 . 12 . 2025</div>
-            <div class="text-xl text-(--Primary)">
-                {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
-                {{ countdown.seconds | numberPad }}
-            </div>
+        <h1 class="mb-4 text-center font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
+        <hr class="m-auto my-4 w-2/3 border-2" />
+        <div class="text-center font-(family-name:--Hello-honey) text-5xl">17:30 - Thứ 7</div>
+        <div class="shake text-center font-(family-name:--Hello-honey) text-6xl">
+            13 . 12 . 2025
+        </div>
+        <div class="text-center text-xl text-(--Primary)">
+            {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
+            {{ countdown.seconds | numberPad }}
         </div>
 
         <div class="p-4">

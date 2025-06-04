@@ -1,5 +1,5 @@
 import { CommonModule, DatePipe, NgFor, NgStyle } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NumberPadPipe } from './shared/pipes/number-pad.pipe';
 import { FormsModule } from '@angular/forms';
 import { WishService } from './wish.service';
@@ -20,6 +20,8 @@ export class AppComponent implements OnInit, OnDestroy {
     targetDate = '2025-12-13';
     countdown = { hours: 0, minutes: 0, seconds: 0 };
 
+    @ViewChild('wishesContainer') wishesContainer!: ElementRef<HTMLDivElement>;
+
     private intervalId: any;
 
     readonly wishService = inject(WishService);
@@ -35,6 +37,14 @@ export class AppComponent implements OnInit, OnDestroy {
             console.log('Fetch wishes from firebase:', wishes);
             this.wishService.wishes.set(wishes);
         });
+    }
+
+    ngAfterViewInit() {
+        this.scrollToBottom();
+    }
+
+    ngAfterViewChecked() {
+        this.scrollToBottom();
     }
 
     flowers = Array.from({ length: 10 }).map((_, i) => ({
@@ -67,6 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
             console.log('new wish created with id:', id);
 
             this.wish = '';
+            this.scrollToBottom();
         });
     }
 
@@ -90,5 +101,14 @@ export class AppComponent implements OnInit, OnDestroy {
         } else {
             this.countdown = { hours: 0, minutes: 0, seconds: 0 };
         }
+    }
+
+    private scrollToBottom() {
+        try {
+            const el = this.wishesContainer?.nativeElement;
+            if (el) {
+                el.scrollTop = el.scrollHeight;
+            }
+        } catch (err) {}
     }
 }

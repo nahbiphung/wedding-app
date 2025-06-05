@@ -1,0 +1,6 @@
+{
+    "hosting": {
+        "public": "dist/wedding-app/browser",
+        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    }
+}

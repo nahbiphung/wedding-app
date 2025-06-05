@@ -5,8 +5,14 @@
         "ng": "ng",
         "start": "ng serve -o --port 1312",
         "build": "ng build",
+        "build:prod": "ng build -c production",
         "watch": "ng build --watch --configuration development",
-        "test": "ng test"
+        "test": "ng test",
+        "hosting": "firebase deploy --only hosting",
+        "git-clean-cache": "git rm -r --cached .",
+        "git-add": "git add .",
+        "git-clean-up": "npm run git-clean-cache && npm run git-add",
+        "format-all": "npx prettier --write ."
     },
     "private": true,
     "dependencies": {

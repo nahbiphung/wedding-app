@@ -4,12 +4,13 @@ import { NumberPadPipe } from './shared/pipes/number-pad.pipe';
 import { FormsModule } from '@angular/forms';
 import { WishService } from './wish.service';
 import { WishFirebaseService } from './wish-firebase.service';
+import { InvitationCardComponent } from './invitation-card/invitation-card.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [NgStyle, NumberPadPipe, NgFor, FormsModule, DatePipe],
+    imports: [NgStyle, NumberPadPipe, NgFor, FormsModule, DatePipe, InvitationCardComponent],
 })
 export class AppComponent implements OnInit, OnDestroy {
     title = 'wedding-app';

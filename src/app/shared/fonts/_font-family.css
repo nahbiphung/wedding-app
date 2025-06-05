@@ -17,3 +17,10 @@
     font-family: 'DonnaSmith';
     src: local('DonnaSmith'), url('./donnaSmith/DonnaSmith.ttf');
 }
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./material-icons/MaterialIcons-Regular.ttf') format('truetype');
+}

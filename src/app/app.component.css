@@ -124,18 +124,17 @@
     }
     100% {
         transform: translateX(0);
-        
     }
 }
 
-.open-image-left{
+.open-image-left {
     animation: openImageLeft 10s forwards;
 }
 
 @keyframes openImageRight {
     0% {
         transform: translateX(100%) rotateY(360deg);
-        
+
         display: none;
         opacity: 0.8;
     }
@@ -145,6 +144,17 @@
     }
 }
 
-.open-image-right{
+.open-image-right {
     animation: openImageRight 10s forwards;
+}
+
+.container-a {
+    overscroll-behavior: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.panel {
+    height: 200px;
 }

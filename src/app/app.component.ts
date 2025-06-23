@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { WishService } from './wish.service';
 import { WishFirebaseService } from './wish-firebase.service';
 import { InvitationCardComponent } from './invitation-card/invitation-card.component';
-import { gsap } from "gsap";
+import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
     @ViewChild('wishesContainer') wishesContainer!: ElementRef<HTMLDivElement>;
-    @ViewChild('.wedding-image') weddingImage!: ElementRef<HTMLDivElement>;
+    @ViewChild('album') album!: ElementRef<HTMLDivElement>;
 
     private intervalId: any;
 
@@ -47,19 +47,6 @@ export class AppComponent implements OnInit, OnDestroy {
         });
 
         gsap.registerPlugin(ScrollTrigger);
-        gsap.to(".wedding-image", {
-            scrollTrigger: {
-                trigger: ".album",
-                start: "top center",
-                end: "",
-                toggleActions: "restart pause reverse pause ",
-                scrub: 1,
-                markers: true
-            },
-            x: 400,
-            rotation: 360,
-            duration: 3
-        })
     }
 
     ngAfterViewInit() {
@@ -69,6 +56,19 @@ export class AppComponent implements OnInit, OnDestroy {
         audio.play().catch(() => {
             // Autoplay might be blocked by browser
             this.isSpinning = false;
+        });
+
+        let session = gsap.utils.toArray('.wedding-image');
+        gsap.to(session, {
+            xPercent: -100 * (session.length - 1),
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.album',
+                pin: true,
+                scrub: 1,
+                snap: 1 / (session.length - 1),
+                end: () => `+=${this.album.nativeElement.offsetWidth}`,
+            },
         });
     }
 
@@ -123,8 +123,6 @@ export class AppComponent implements OnInit, OnDestroy {
             clearInterval(this.intervalId);
         }
     }
-
-    
 
     private updateCountdown(target: string) {
         const now = new Date();

@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { WishService } from './wish.service';
 import { WishFirebaseService } from './wish-firebase.service';
 import { InvitationCardComponent } from './invitation-card/invitation-card.component';
+import { gsap } from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
     selector: 'app-root',
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
     @ViewChild('wishesContainer') wishesContainer!: ElementRef<HTMLDivElement>;
+    @ViewChild('.wedding-image') weddingImage!: ElementRef<HTMLDivElement>;
 
     private intervalId: any;
 
@@ -42,6 +45,21 @@ export class AppComponent implements OnInit, OnDestroy {
 
             setTimeout(() => this.scrollToBottom(), 0);
         });
+
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(".wedding-image", {
+            scrollTrigger: {
+                trigger: ".album",
+                start: "top center",
+                end: "",
+                toggleActions: "restart pause reverse pause ",
+                scrub: 1,
+                markers: true
+            },
+            x: 400,
+            rotation: 360,
+            duration: 3
+        })
     }
 
     ngAfterViewInit() {
@@ -92,7 +110,6 @@ export class AppComponent implements OnInit, OnDestroy {
             this.wish = '';
             return;
         }
-
         this.wishFirebaseService.addWish(this.wish).subscribe((id) => {
             console.log('new wish created with id:', id);
 
@@ -106,6 +123,8 @@ export class AppComponent implements OnInit, OnDestroy {
             clearInterval(this.intervalId);
         }
     }
+
+    
 
     private updateCountdown(target: string) {
         const now = new Date();

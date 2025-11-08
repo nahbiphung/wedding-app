@@ -34,6 +34,11 @@
 }
 
 @font-face {
+    font-family: 'thank-you';
+    src: local('thank-you'), url('./thank-you/thank-you.ttf');
+}
+
+@font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;

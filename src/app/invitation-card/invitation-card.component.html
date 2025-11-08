@@ -1,18 +1,9 @@
-<p>invitation-card works!</p>
-
-<button
-    #permissionButton
-    id="permissionButton"
-    class="border-2 border-amber-300">
-    Enable Device Orientation For IOS trigger
-</button>
-
-<div
+<!-- <div
     #testSection
-    id="test-section"></div>
-<div
+    id="test-section"></div> -->
+<!-- <div
     #positionXY
-    id="position-x-y"></div>
+    id="position-x-y"></div> -->
 
 <section>
     <div class="container">
@@ -21,15 +12,42 @@
             class="cardWrapper">
             <div
                 #card
-                class="card">
-                <div>version 26</div>
+                class="card bg-[url('/Wedding-Images/yellow-stain-on-white-background.jpg')] bg-cover">
+                <img
+                    class="absolute top-2 right-2 w-10"
+                    src="/Wedding-Images/hi-icon.png" />
+                <div
+                    class="absolute top-[50%] left-[50%] w-[200px] translate-x-[-50%] translate-y-[-50%] text-center text-2xl font-bold">
+                    <div
+                        class="metallic-gold"
+                        data-text="HUỲNH NHƯ">
+                        HUỲNH NHƯ
+                    </div>
+                    <div
+                        class="metallic-gold"
+                        data-text="GIA OAI">
+                        GIA OAI
+                    </div>
+                </div>
                 <div
                     #highlight
                     class="highlight"></div>
-                <div
+                <!-- <div
                     #dot
-                    class="dot"></div>
+                    class="dot"></div> -->
             </div>
         </div>
     </div>
 </section>
+
+<div class="mt-4 flex w-full justify-center">
+    <button
+        #permissionButton
+        id="permissionButton"
+        class="cursor-pointer rounded-lg border-2 p-2">
+        <span
+            class="cursor-pointer bg-gradient-to-r from-(--Primary) from-30% to-yellow-700 to-90% bg-clip-text text-center font-bold text-transparent">
+            Enable Device Orientation For IOS trigger
+        </span>
+    </button>
+</div>

@@ -25,7 +25,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
     @ViewChild('wishesContainer') wishesContainer!: ElementRef<HTMLDivElement>;
-    // @ViewChild('album') album!: ElementRef<HTMLDivElement>;
 
     private intervalId: any;
 
@@ -39,7 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }, 1000);
 
         this.wishFirebaseService.getWishes().subscribe((wishes) => {
-            console.log('Fetch wishes from firebase:', wishes);
+            // console.log('Fetch wishes from firebase:', wishes);
             this.wishService.wishes.set(wishes);
 
             setTimeout(() => this.scrollToBottom(), 0);
@@ -51,24 +50,11 @@ export class AppComponent implements OnInit, OnDestroy {
     ngAfterViewInit() {
         const audio = this.audioPlayer.nativeElement;
 
-        console.log('Audio element:', audio);
+        // console.log('Audio element:', audio);
         audio.play().catch(() => {
             // Autoplay might be blocked by browser
             this.isSpinning = false;
         });
-
-        // let session = gsap.utils.toArray('.wedding-image');
-        // gsap.to(session, {
-        //     xPercent: -100 * (session.length - 1),
-        //     ease: 'none',
-        //     scrollTrigger: {
-        //         trigger: '.album',
-        //         pin: true,
-        //         scrub: 1,
-        //         snap: 1 / (session.length - 1),
-        //         end: () => `+=${this.album.nativeElement.offsetWidth}`,
-        //     },
-        // });
     }
 
     flowers = Array.from({ length: 10 }).map((_, i) => ({

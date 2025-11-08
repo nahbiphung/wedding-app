@@ -59,7 +59,7 @@
         alt="flower" />
 </div>
 
-<div class="bg-[url('/Wedding-Images/veinstone.jpg')] bg-cover">
+<div class="bg-[url('/Wedding-Images/veinstone.jpg')] bg-cover pb-4">
     <div
         class="relative h-screen w-full bg-cover bg-center"
         style="background-image: url('./Wedding-Images/NTU01453.jpg')">
@@ -93,12 +93,12 @@
                 <div class="text-xl tracking-[4px]">DECEMBER</div>
                 <div class="my-2 flex gap-4">
                     <div
-                        class="w-[200px] border-t-2 border-b-2 p-[8px] pr-[8px] pl-[16px] text-center tracking-[8px]">
+                        class="w-[160px] border-t-2 border-b-2 p-[8px] pr-[8px] pl-[16px] text-center tracking-[4px]">
                         SATURDAY
                     </div>
-                    <div class="text-4xl">12</div>
+                    <div class="text-4xl">13</div>
                     <div
-                        class="w-[200px] border-t-2 border-b-2 p-[8px] pr-[8px] pl-[16px] text-center tracking-[8px]">
+                        class="w-[160px] border-t-2 border-b-2 p-[8px] pr-[8px] pl-[16px] text-center tracking-[4px]">
                         AT 6:30 PM
                     </div>
                 </div>
@@ -132,9 +132,9 @@
                 <li class="inline-block w-[14%] py-1 text-center">10</li>
                 <li class="inline-block w-[14%] py-1 text-center">11</li>
                 <li class="inline-block w-[14%] py-1 text-center">12</li>
-                <li class="inline-block w-[14%] py-1 text-center text-red-500">
+                <li class="inline-block w-[14%] py-1 text-center">
                     <div
-                        class="m-auto w-[27px] rounded-full border bg-red-500 text-center font-bold text-white">
+                        class="m-auto w-[27px] rounded-full border border-2 border-red-500 text-center font-bold">
                         13
                     </div>
                 </li>
@@ -173,7 +173,10 @@
                         class="material-icons jump">
                         place
                     </span>
-                    Location
+                    <span
+                        class="bg-gradient-to-r from-(--Primary) from-30% to-yellow-700 to-90% bg-clip-text text-center font-bold text-transparent">
+                        Location
+                    </span>
                 </div>
             </div>
 
@@ -217,10 +220,10 @@
                     placeholder="Nhập lời chúc" />
 
                 <button
-                    class="rounded-lg border-2 p-2"
+                    class="cursor-pointer rounded-lg border-2 p-2"
                     type="submit">
                     <span
-                        class="w-full cursor-pointer bg-gradient-to-r from-(--Primary) from-30% to-yellow-700 to-90% bg-clip-text text-center font-bold text-transparent">
+                        class="w-full bg-gradient-to-r from-(--Primary) from-30% to-yellow-700 to-90% bg-clip-text text-center font-bold text-transparent">
                         Gửi lời chúc
                     </span>
                 </button>
@@ -229,7 +232,8 @@
     </div>
 
     <section class="my-8 font-(family-name:--ovo)">
-        <div class="py-4 text-center text-4xl">Album Beach</div>
+        <hr class="m-auto my-4 w-2/3 border-2 opacity-30" />
+        <div class="mb-4 text-center text-4xl">Album</div>
 
         <div class="relative">
             <div
@@ -261,11 +265,9 @@
 
             <!-- Scroll Indicator -->
             <div
-                class="pointer-events-none absolute top-1/2 right-4 flex -translate-y-1/2 animate-bounce flex-col items-center">
-                <span class="material-icons text-3xl text-(--Primary) opacity-70">
-                    keyboard_arrow_right
-                </span>
-                <span class="text-xs whitespace-nowrap text-(--Primary) opacity-70">
+                class="shake pointer-events-none absolute top-1/2 right-4 flex -translate-y-1/2 flex-col items-center">
+                <span
+                    class="font-(family-name:--ovo) text-xs font-bold whitespace-nowrap text-(--Primary) opacity-70">
                     Scroll →
                 </span>
             </div>
@@ -273,4 +275,9 @@
     </section>
 
     <app-invitation-card></app-invitation-card>
+
+    <section class="text-center">
+        <div class="my-8 font-(family-name:--thank-you) text-6xl">Thank you</div>
+        <div class="font-(family-name:--ovo) text-2xl">for being a part of our special day!</div>
+    </section>
 </div>

@@ -9,9 +9,9 @@ export class InvitationCardComponent implements AfterViewInit {
     @ViewChild('cardWrapper') cardWrapper!: ElementRef<HTMLDivElement>;
     @ViewChild('card') card!: ElementRef<HTMLDivElement>;
     @ViewChild('highlight') highlight!: ElementRef<HTMLDivElement>;
-    @ViewChild('dot') dot!: ElementRef<HTMLDivElement>;
-    @ViewChild('testSection') testSection!: ElementRef<HTMLDivElement>;
-    @ViewChild('positionXY') positionXY!: ElementRef<HTMLDivElement>;
+    // @ViewChild('dot') dot!: ElementRef<HTMLDivElement>;
+    // @ViewChild('testSection') testSection!: ElementRef<HTMLDivElement>;
+    // @ViewChild('positionXY') positionXY!: ElementRef<HTMLDivElement>;
     @ViewChild('permissionButton') permissionButton!: ElementRef<HTMLButtonElement>;
 
     mostX = 10;
@@ -30,7 +30,7 @@ export class InvitationCardComponent implements AfterViewInit {
                                 true
                             );
                         } else {
-                            this.testSection.nativeElement.innerHTML = `<p>Permission denied for Device Orientation.</p>`;
+                            // this.testSection.nativeElement.innerHTML = `<p>Permission denied for Device Orientation.</p>`;
                         }
                     })
                     .catch((error: any) => {
@@ -43,7 +43,7 @@ export class InvitationCardComponent implements AfterViewInit {
         if ((window as any).DeviceOrientationEvent) {
             window.addEventListener('deviceorientation', this.handleOrientation, true);
         } else {
-            this.testSection.nativeElement.innerHTML = `<p>Device Orientation API not supported</p>`;
+            // this.testSection.nativeElement.innerHTML = `<p>Device Orientation API not supported</p>`;
         }
 
         // Mouse events
@@ -55,10 +55,10 @@ export class InvitationCardComponent implements AfterViewInit {
         const leftToRight = event.gamma ?? 0;
         const frontToBack = event.beta ?? 0;
 
-        this.testSection.nativeElement.innerHTML = `
-      <p>Left to Right: ${leftToRight}</p>
-      <p>Front to Back: ${frontToBack}</p>
-    `;
+        // this.testSection.nativeElement.innerHTML = `
+        //     <p>Left to Right: ${leftToRight}</p>
+        //     <p>Front to Back: ${frontToBack}</p>
+        // `;
 
         const { width, height } = this.cardWrapper.nativeElement.getBoundingClientRect();
         const minGamma = -5,
@@ -76,18 +76,18 @@ export class InvitationCardComponent implements AfterViewInit {
         const rotationY = ((offsetX - halfWidth) / halfWidth) * this.mostX;
         const rotationX = ((offsetY - halfHeight) / halfHeight) * this.mostY;
 
-        this.positionXY.nativeElement.innerHTML = `
-      <p>offsetX: ${offsetX}</p>
-      <p>offsetY: ${offsetY}</p>
-      <p>rotationX: ${rotationX}</p>
-      <p>rotationY: ${rotationY}</p>
-    `;
+        // this.positionXY.nativeElement.innerHTML = `
+        //     <p>offsetX: ${offsetX}</p>
+        //     <p>offsetY: ${offsetY}</p>
+        //     <p>rotationX: ${rotationX}</p>
+        //     <p>rotationY: ${rotationY}</p>
+        // `;
 
         this.card.nativeElement.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
         this.highlight.nativeElement.style.left = `${(rotationY / this.mostX) * 60 * -1}%`;
         this.highlight.nativeElement.style.top = `${(rotationX / this.mostY) * 60 * -1}%`;
-        this.dot.nativeElement.style.left = `${offsetX}px`;
-        this.dot.nativeElement.style.top = `${offsetY}px`;
+        // this.dot.nativeElement.style.left = `${offsetX}px`;
+        // this.dot.nativeElement.style.top = `${offsetY}px`;
     };
 
     handleMouseMove = (e: MouseEvent) => {
@@ -103,18 +103,18 @@ export class InvitationCardComponent implements AfterViewInit {
         const rotationY = ((x - halfWidth) / halfWidth) * this.mostX;
         const rotationX = ((y - halfHeight) / halfHeight) * this.mostY;
 
-        this.positionXY.nativeElement.innerHTML = `
-      <p>e.offsetX: ${e.offsetX}</p>
-      <p>e.offsetY: ${e.offsetY}</p>
-      <p>rotationX: ${rotationX}</p>
-      <p>rotationY: ${rotationY}</p>
-    `;
+        // this.positionXY.nativeElement.innerHTML = `
+        //     <p>e.offsetX: ${e.offsetX}</p>
+        //     <p>e.offsetY: ${e.offsetY}</p>
+        //     <p>rotationX: ${rotationX}</p>
+        //     <p>rotationY: ${rotationY}</p>
+        // `;
 
         this.card.nativeElement.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
         this.highlight.nativeElement.style.left = `${(rotationY / this.mostX) * 60 * -1}%`;
         this.highlight.nativeElement.style.top = `${(rotationX / this.mostY) * 60 * -1}%`;
-        this.dot.nativeElement.style.left = `${x}px`;
-        this.dot.nativeElement.style.top = `${y}px`;
+        // this.dot.nativeElement.style.left = `${x}px`;
+        // this.dot.nativeElement.style.top = `${y}px`;
     };
 
     handleMouseLeave = () => {
@@ -126,7 +126,7 @@ export class InvitationCardComponent implements AfterViewInit {
         this.highlight.nativeElement.style.top = `10%`;
 
         const { width, height } = this.cardWrapper.nativeElement.getBoundingClientRect();
-        this.dot.nativeElement.style.left = `${width / 2}px`;
-        this.dot.nativeElement.style.top = `${height / 2}px`;
+        // this.dot.nativeElement.style.left = `${width / 2}px`;
+        // this.dot.nativeElement.style.top = `${height / 2}px`;
     };
 }

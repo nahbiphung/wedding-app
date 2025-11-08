@@ -19,6 +19,21 @@
 }
 
 @font-face {
+    font-family: 'ovo';
+    src: local('ovo'), url('./ovo/Ovo-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'andasia';
+    src: local('andasia'), url('./andasia/Andasia-Personal-Use-Only.ttf');
+}
+
+@font-face {
+    font-family: 'theseasons';
+    src: local('theseasons'), url('./theseasons/theseasons-reg.otf');
+}
+
+@font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;

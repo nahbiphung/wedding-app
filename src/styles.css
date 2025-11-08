@@ -6,13 +6,17 @@
     --Hello-honey: 'Hello-honey', Arial, sans-serif;
     --Mentawai: 'Mentawai', Arial, sans-serif;
     --DonnaSmith: 'DonnaSmith', Arial, sans-serif;
+    --ovo: 'ovo', Arial, sans-serif;
+    --andasia: 'andasia', Arial, sans-serif;
+    --theseasons: 'theseasons', Arial, sans-serif;
+
     --Material-Icons: 'Material Icons';
 
     --Soft-Peach: #ffdab9;
 
     --Golden-Sand: #f4e1c1;
 
-    --Primary: #78552b;
+    --Primary: black;
 
     --Soft-White: #f8f8f8;
 
@@ -26,6 +30,7 @@
 body {
     margin: 0;
     padding: 0;
+    cursor: default;
 }
 
 .material-icons {

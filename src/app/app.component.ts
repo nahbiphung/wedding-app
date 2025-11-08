@@ -1,6 +1,5 @@
 import { CommonModule, DatePipe, NgFor, NgStyle } from '@angular/common';
 import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NumberPadPipe } from './shared/pipes/number-pad.pipe';
 import { FormsModule } from '@angular/forms';
 import { WishService } from './wish.service';
 import { WishFirebaseService } from './wish-firebase.service';
@@ -12,7 +11,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [NgStyle, NumberPadPipe, NgFor, FormsModule, DatePipe, InvitationCardComponent],
+    imports: [NgStyle, NgFor, FormsModule, DatePipe, InvitationCardComponent],
 })
 export class AppComponent implements OnInit, OnDestroy {
     title = 'wedding-app';
@@ -26,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
     @ViewChild('wishesContainer') wishesContainer!: ElementRef<HTMLDivElement>;
-    @ViewChild('album') album!: ElementRef<HTMLDivElement>;
+    // @ViewChild('album') album!: ElementRef<HTMLDivElement>;
 
     private intervalId: any;
 
@@ -58,18 +57,18 @@ export class AppComponent implements OnInit, OnDestroy {
             this.isSpinning = false;
         });
 
-        let session = gsap.utils.toArray('.wedding-image');
-        gsap.to(session, {
-            xPercent: -100 * (session.length - 1),
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.album',
-                pin: true,
-                scrub: 1,
-                snap: 1 / (session.length - 1),
-                end: () => `+=${this.album.nativeElement.offsetWidth}`,
-            },
-        });
+        // let session = gsap.utils.toArray('.wedding-image');
+        // gsap.to(session, {
+        //     xPercent: -100 * (session.length - 1),
+        //     ease: 'none',
+        //     scrollTrigger: {
+        //         trigger: '.album',
+        //         pin: true,
+        //         scrub: 1,
+        //         snap: 1 / (session.length - 1),
+        //         end: () => `+=${this.album.nativeElement.offsetWidth}`,
+        //     },
+        // });
     }
 
     flowers = Array.from({ length: 10 }).map((_, i) => ({

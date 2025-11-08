@@ -63,27 +63,46 @@
     <div
         class="relative h-screen w-full bg-cover bg-center"
         style="background-image: url('./Wedding-Images/NTU01453.jpg')">
-        <div class="absolute top-16 w-full font-(family-name:--Hello-honey) text-(--Soft-White)">
+        <div class="absolute top-16 w-full text-(--Soft-White)">
             <div class="flex flex-col items-center">
                 <div class="font-(family-name:--Dearly-loved-one) text-(--Primary)">
                     We’re Getting Married!
                 </div>
-                <div class="bg-[#e9d8c436] text-8xl">Oai <span class="text-4xl">❤</span> Như</div>
-                <div class="shake text-6xl text-(--Primary)">13 . 12 . 2025</div>
-                <div class="text-2xl text-(--Primary)">{{ getDaysLeft() }} days left</div>
+                <div class="bg-[#e9d8c436] font-(family-name:--Hello-honey) text-8xl">
+                    Oai <span class="text-4xl">❤</span> Như
+                </div>
+                <!-- <div class="shake text-6xl text-(--Primary)">13 . 12 . 2025</div> -->
+                <div class="font-(family-name:--ovo) text-2xl text-(--Primary)">
+                    {{ getDaysLeft() }} days left
+                </div>
             </div>
         </div>
     </div>
 
     <div class="py-12 text-(--Primary)">
         <div class="flex flex-col items-center">
-            <h1 class="mb-4 font-(family-name:--Mentawai) text-2xl">SAVE THE DATE</h1>
-            <hr class="m-auto my-4 w-2/3 border-2" />
-            <div class="font-(family-name:--Hello-honey) text-5xl">17:30 - Thứ 7</div>
+            <h1 class="mb-4 font-(family-name:--andasia) text-5xl">Save The Date</h1>
+            <!-- <div class="text-5xl">17:30 - Thứ 7</div>
             <div class="shake font-(family-name:--Hello-honey) text-6xl">13 . 12 . 2025</div>
             <div class="text-xl text-(--Primary)">
                 {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
                 {{ countdown.seconds | numberPad }}
+            </div> -->
+
+            <div class="flex w-full flex-col items-center font-(family-name:--ovo)">
+                <div class="text-xl tracking-[4px]">DECEMBER</div>
+                <div class="my-2 flex gap-4">
+                    <div
+                        class="w-[200px] border-t-2 border-b-2 p-[8px] pr-[8px] pl-[16px] text-center tracking-[8px]">
+                        SATURDAY
+                    </div>
+                    <div class="text-4xl">12</div>
+                    <div
+                        class="w-[200px] border-t-2 border-b-2 p-[8px] pr-[8px] pl-[16px] text-center tracking-[8px]">
+                        AT 6:30 PM
+                    </div>
+                </div>
+                <div class="text-xl tracking-[4px]">2025</div>
             </div>
         </div>
 
@@ -113,17 +132,10 @@
                 <li class="inline-block w-[14%] py-1 text-center">10</li>
                 <li class="inline-block w-[14%] py-1 text-center">11</li>
                 <li class="inline-block w-[14%] py-1 text-center">12</li>
-                <li class="inline-block w-[14%] py-1 text-center">
-                    <div class="relative">
-                        <span class="relative z-1 font-bold text-(--Soft-White)">13</span>
-
-                        <div class="absolute top-[-16px] right-[4px]">
-                            <span
-                                [ngStyle]="{ 'font-size': '42px' }"
-                                class="material-icons">
-                                favorite
-                            </span>
-                        </div>
+                <li class="inline-block w-[14%] py-1 text-center text-red-500">
+                    <div
+                        class="m-auto w-[27px] rounded-full border bg-red-500 text-center font-bold text-white">
+                        13
                     </div>
                 </li>
                 <li class="inline-block w-[14%] py-1 text-center">14</li>
@@ -147,15 +159,14 @@
             </ul>
         </div>
 
-        <hr class="m-auto my-4 w-2/3 border-2" />
+        <hr class="m-auto my-4 w-2/3 border-2 opacity-30" />
 
-        <div class="text-center">
-            <div>Địa điểm:</div>
-            <div class="py-2 font-(family-name:--Dearly-loved-one) text-4xl">Nhà Hàng Ái Huê 2</div>
+        <div class="text-center font-(family-name:--ovo)">
+            <div class="py-2 text-4xl">Nhà Hàng Ái Huê 2</div>
             <div class="px-4">338 Đ. Trần Hưng Đạo, Phường 11, Quận 5, Hồ Chí Minh</div>
             <div class="my-6 flex justify-center text-2xl">
                 <div
-                    class="flex items-center justify-center rounded-lg border-2 p-3"
+                    class="flex cursor-pointer items-center justify-center rounded-lg border-2 p-3"
                     (click)="openMap()">
                     <span
                         [ngStyle]="{ 'font-size': '42px' }"
@@ -209,7 +220,7 @@
                     class="rounded-lg border-2 p-2"
                     type="submit">
                     <span
-                        class="w-full bg-gradient-to-r from-(--Primary) from-30% to-yellow-700 to-90% bg-clip-text text-center font-bold text-transparent">
+                        class="w-full cursor-pointer bg-gradient-to-r from-(--Primary) from-30% to-yellow-700 to-90% bg-clip-text text-center font-bold text-transparent">
                         Gửi lời chúc
                     </span>
                 </button>
@@ -217,30 +228,49 @@
         </div>
     </div>
 
-    <div
-        class="album mt-2 flex h-screen w-[800%] flex-nowrap gap-1 px-2 landscape:hidden"
-        #album>
-        <img
-            class="wedding-image w-screen object-cover"
-            src="/Wedding-Images/NTU01290.jpg" />
-        <img
-            class="wedding-image h-screen w-screen object-cover object-[30%_70%]"
-            src="/Wedding-Images/NTU01032.jpg" />
-        <img
-            class="wedding-image w-screen object-cover object-[60%_40%]"
-            src="/Wedding-Images/NTU01357.jpg" />
-        <img
-            class="wedding-image w-screen object-cover"
-            src="/Wedding-Images/NTU01240.jpg" />
-        <img
-            class="wedding-image w-screen object-cover"
-            src="/Wedding-Images/NTU01064.jpg" />
-        <img
-            class="wedding-image w-screen object-cover object-[25%_75%]"
-            src="/Wedding-Images/NTU01263.jpg" />
-        <img
-            class="wedding-image w-screen object-cover"
-            src="/Wedding-Images/NTU01386.jpg" />
-    </div>
+    <section class="my-8 font-(family-name:--ovo)">
+        <div class="py-4 text-center text-4xl">Album Beach</div>
+
+        <div class="relative">
+            <div
+                #albumBeach
+                class="flex gap-2 overflow-x-auto overflow-y-hidden scroll-smooth p-2"
+                style="-webkit-overflow-scrolling: touch">
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01290.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01032.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01357.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01240.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01064.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01263.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01386.jpg" />
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div
+                class="pointer-events-none absolute top-1/2 right-4 flex -translate-y-1/2 animate-bounce flex-col items-center">
+                <span class="material-icons text-3xl text-(--Primary) opacity-70">
+                    keyboard_arrow_right
+                </span>
+                <span class="text-xs whitespace-nowrap text-(--Primary) opacity-70">
+                    Scroll →
+                </span>
+            </div>
+        </div>
+    </section>
+
     <app-invitation-card></app-invitation-card>
 </div>

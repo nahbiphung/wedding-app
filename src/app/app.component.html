@@ -233,7 +233,7 @@
 
     <section class="my-8 font-(family-name:--ovo)">
         <hr class="m-auto my-4 w-2/3 border-2 opacity-30" />
-        <div class="mb-4 text-center text-4xl">Album</div>
+        <div class="mb-4 text-center text-4xl">Albums</div>
 
         <div class="relative">
             <div
@@ -278,10 +278,24 @@
                     src="/Wedding-Images/NTU01190.jpg" />
                 <img
                     class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
-                    src="/Wedding-Images/NTU009856.jpg" />
-                <img
-                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
                     src="/Wedding-Images/NTU00949.jpg" />
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div
+                class="shake pointer-events-none absolute top-1/2 right-4 flex -translate-y-1/2 flex-col items-center">
+                <span
+                    class="font-(family-name:--ovo) text-xs font-bold whitespace-nowrap text-(--Primary) opacity-70">
+                    Scroll →
+                </span>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div
+                #albumIndoor
+                class="flex gap-2 overflow-x-auto overflow-y-hidden scroll-smooth p-2"
+                style="-webkit-overflow-scrolling: touch">
                 <img
                     class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
                     src="/Wedding-Images/NTU00937.jpg" />
@@ -328,7 +342,8 @@
         </div>
     </section>
 
-    <app-invitation-card></app-invitation-card>
+    <!-- TODO: Open it later -->
+    <!-- <app-invitation-card></app-invitation-card> -->
 
     <section class="text-center">
         <div class="my-8 font-(family-name:--thank-you) text-6xl">Thank you</div>

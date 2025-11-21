@@ -1,17 +1,18 @@
-import { CommonModule, DatePipe, NgFor, NgStyle } from '@angular/common';
+import { DatePipe, NgFor, NgStyle } from '@angular/common';
 import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { WishService } from './wish.service';
-import { WishFirebaseService } from './wish-firebase.service';
-import { InvitationCardComponent } from './invitation-card/invitation-card.component';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import { WishFirebaseService } from './wish-firebase.service';
+import { WishService } from './wish.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [NgStyle, NgFor, FormsModule, DatePipe, InvitationCardComponent],
+    imports: [NgStyle, NgFor, FormsModule, DatePipe],
 })
 export class AppComponent implements OnInit, OnDestroy {
     title = 'wedding-app';

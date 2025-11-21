@@ -1,0 +1,45 @@
+/* Optimized styles for page-not-supported component */
+
+/* Icon animations */
+@keyframes gentle-float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.icon-float {
+    animation: gentle-float 3s ease-in-out infinite;
+}
+
+/* Subtle hover effects */
+.card-hover:hover {
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+}
+
+/* QR Code styling */
+.qr-container {
+    transition: transform 0.2s ease;
+}
+
+.qr-container:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .qr-image {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-height: 700px) {
+    .card-hover {
+        padding: 1rem;
+    }
+}

@@ -5,6 +5,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { routes } from './app.routes';
 import { environment } from './environments/environment';
+
 export const appConfig: ApplicationConfig = {
     providers: [
         provideZoneChangeDetection({ eventCoalescing: true }),

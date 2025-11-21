@@ -1,0 +1,352 @@
+<div class="relative z-10">
+    <div
+        class="openLeft absolute top-0 z-2 h-screen w-1/2 bg-[url('/Wedding-Images/letter-background.jpg')] bg-cover shadow-xl/30"></div>
+    <div
+        class="openRight absolute top-0 right-0 z-1 h-screen w-2/3 bg-[url('/Wedding-Images/letter-background.jpg')] bg-cover"></div>
+</div>
+
+<div class="fixed top-4 right-4 z-9">
+    <audio
+        class="hidden"
+        #audioPlayer
+        src="Wedding-audio/ChiCanCoNhau-VuCatTuong-16132123.mp3"
+        loop></audio>
+    <svg
+        viewBox="0 0 60 60"
+        width="60"
+        height="60"
+        [class.circle-text-spin]="isSpinning"
+        class="circle-text-svg select-none">
+        <defs>
+            <path
+                id="circlePath"
+                d="M 30, 30
+                       m -24, 0
+                       a 24,24 0 1,1 48,0
+                       a 24,24 0 1,1 -48,0" />
+        </defs>
+        <text
+            font-size="5"
+            fill="#b77b3b"
+            font-family="cursive">
+            <textPath
+                xlink:href="#circlePath"
+                startOffset="0%">
+                Oai & Như • Oai & Như • Oai & Như • Oai & Như • Oai & Như •
+            </textPath>
+        </text>
+    </svg>
+    <button
+        (click)="isSpinning = !isSpinning"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-amber-300 transition"
+        style="outline: none; border: none">
+        <span
+            class="material-icons py-1 text-4xl text-amber-700"
+            (click)="toggleAudio()">
+            {{ isSpinning ? 'pause_circle' : 'play_circle' }}
+        </span>
+    </button>
+</div>
+
+<div class="falling-flowers">
+    <img
+        *ngFor="let flower of flowers"
+        class="flower"
+        [style.left.%]="flower.left"
+        [style.animationDuration]="flower.duration + 's'"
+        [style.animationDelay]="flower.delay + 's'"
+        src="Wedding-Images/flower.png"
+        alt="flower" />
+</div>
+
+<div class="bg-[url('/Wedding-Images/veinstone.jpg')] bg-cover pb-4">
+    <div
+        class="relative h-screen w-full bg-cover bg-center"
+        style="background-image: url('./Wedding-Images/NTU01453.jpg')">
+        <div class="absolute top-16 w-full text-(--Soft-White)">
+            <div class="flex flex-col items-center">
+                <div class="font-(family-name:--Dearly-loved-one) text-(--Primary)">
+                    We’re Getting Married!
+                </div>
+                <div class="bg-[#e9d8c436] font-(family-name:--Hello-honey) text-8xl">
+                    Oai <span class="text-4xl">❤</span> Như
+                </div>
+                <!-- <div class="shake text-6xl text-(--Primary)">13 . 12 . 2025</div> -->
+                <div class="font-(family-name:--ovo) text-2xl text-(--Primary)">
+                    {{ getDaysLeft() }} days left
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-12 text-(--Primary)">
+        <div class="flex flex-col items-center">
+            <h1 class="mb-4 font-(family-name:--andasia) text-5xl">Save The Date</h1>
+            <!-- <div class="text-5xl">17:30 - Thứ 7</div>
+            <div class="shake font-(family-name:--Hello-honey) text-6xl">13 . 12 . 2025</div>
+            <div class="text-xl text-(--Primary)">
+                {{ countdown.hours | numberPad }} : {{ countdown.minutes | numberPad }} :
+                {{ countdown.seconds | numberPad }}
+            </div> -->
+
+            <div class="flex w-full flex-col items-center font-(family-name:--ovo)">
+                <div class="text-xl tracking-[4px]">DECEMBER</div>
+                <div class="my-2 flex gap-4">
+                    <div
+                        class="w-[150px] border-t-2 border-b-2 p-[8px] pr-[8px] pl-[16px] text-center tracking-[4px]">
+                        SATURDAY
+                    </div>
+                    <div class="text-4xl">13</div>
+                    <div
+                        class="w-[150px] border-t-2 border-b-2 p-[8px] pr-[8px] pl-[16px] text-center tracking-[4px]">
+                        AT 6:30 PM
+                    </div>
+                </div>
+                <div class="text-xl tracking-[4px]">2025</div>
+            </div>
+        </div>
+
+        <div class="p-4">
+            <ul class="list-none font-bold">
+                <li class="inline-block w-[14%] py-1 text-center">Mo</li>
+                <li class="inline-block w-[14%] py-1 text-center">Tu</li>
+                <li class="inline-block w-[14%] py-1 text-center">We</li>
+                <li class="inline-block w-[14%] py-1 text-center">Th</li>
+                <li class="inline-block w-[14%] py-1 text-center">Fr</li>
+                <li class="inline-block w-[14%] py-1 text-center">Sa</li>
+                <li class="inline-block w-[14%] py-1 text-center">Su</li>
+            </ul>
+
+            <hr />
+
+            <ul class="list-none">
+                <li class="inline-block w-[14%] py-1 text-center">1</li>
+                <li class="inline-block w-[14%] py-1 text-center">2</li>
+                <li class="inline-block w-[14%] py-1 text-center">3</li>
+                <li class="inline-block w-[14%] py-1 text-center">4</li>
+                <li class="inline-block w-[14%] py-1 text-center">5</li>
+                <li class="inline-block w-[14%] py-1 text-center">6</li>
+                <li class="inline-block w-[14%] py-1 text-center">7</li>
+                <li class="inline-block w-[14%] py-1 text-center">8</li>
+                <li class="inline-block w-[14%] py-1 text-center">9</li>
+                <li class="inline-block w-[14%] py-1 text-center">10</li>
+                <li class="inline-block w-[14%] py-1 text-center">11</li>
+                <li class="inline-block w-[14%] py-1 text-center">12</li>
+                <li class="inline-block w-[14%] py-1 text-center">
+                    <div
+                        class="m-auto w-[27px] rounded-full bg-black text-center font-bold text-white">
+                        13
+                    </div>
+                </li>
+                <li class="inline-block w-[14%] py-1 text-center">14</li>
+                <li class="inline-block w-[14%] py-1 text-center">15</li>
+                <li class="inline-block w-[14%] py-1 text-center">16</li>
+                <li class="inline-block w-[14%] py-1 text-center">17</li>
+                <li class="inline-block w-[14%] py-1 text-center">18</li>
+                <li class="inline-block w-[14%] py-1 text-center">19</li>
+                <li class="inline-block w-[14%] py-1 text-center">20</li>
+                <li class="inline-block w-[14%] py-1 text-center">21</li>
+                <li class="inline-block w-[14%] py-1 text-center">22</li>
+                <li class="inline-block w-[14%] py-1 text-center">23</li>
+                <li class="inline-block w-[14%] py-1 text-center">24</li>
+                <li class="inline-block w-[14%] py-1 text-center">25</li>
+                <li class="inline-block w-[14%] py-1 text-center">26</li>
+                <li class="inline-block w-[14%] py-1 text-center">27</li>
+                <li class="inline-block w-[14%] py-1 text-center">28</li>
+                <li class="inline-block w-[14%] py-1 text-center">29</li>
+                <li class="inline-block w-[14%] py-1 text-center">30</li>
+                <li class="inline-block w-[14%] py-1 text-center">31</li>
+            </ul>
+        </div>
+
+        <hr class="m-auto my-4 w-2/3 border-2 opacity-30" />
+
+        <div class="text-center font-(family-name:--ovo)">
+            <div class="py-2 text-4xl">Nhà Hàng Ái Huê 2</div>
+            <div class="px-4">338 Đ. Trần Hưng Đạo, Phường 11, Quận 5, Hồ Chí Minh</div>
+            <div class="my-6 flex justify-center text-2xl">
+                <div
+                    class="flex cursor-pointer items-center justify-center rounded-lg border-2 p-3"
+                    (click)="openMap()">
+                    <span
+                        [ngStyle]="{ 'font-size': '42px' }"
+                        class="material-icons jump">
+                        place
+                    </span>
+                    <span
+                        class="bg-gradient-to-r from-(--Primary) from-30% to-yellow-700 to-90% bg-clip-text text-center font-bold text-transparent">
+                        Location
+                    </span>
+                </div>
+            </div>
+
+            <iframe
+                class="m-auto"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.7701581144943!2d106.65942340789007!3d10.752189189350862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f0c4d558edb%3A0x2c60d7b2f3e598a0!2zTmjDoCBIw6BuZyDDgWkgSHXDqiAyIC0g5oSb6I-vIDIg5aSn5rSS5qiT!5e0!3m2!1sen!2ssg!4v1748943664181!5m2!1sen!2ssg"
+                width="350"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <div class="px-4 text-(--Primary)">
+        <div class="flex flex-col gap-4">
+            <div
+                #wishesContainer
+                class="h-[200px] min-h-[200px] w-full overflow-auto rounded-lg border-2 bg-[#fde1b16b]">
+                @for (wish of wishService.wishes(); track wish.id; let idx = $index) {
+                    <div class="my-2 px-2 py-1">
+                        <div class="text-xs italic text-shadow-amber-900">
+                            {{ wish?.createdAt?.toDate() | date: 'short' }}
+                        </div>
+                        <div>{{ wish?.text }}</div>
+                    </div>
+                }
+            </div>
+
+            <form
+                #wishForm="ngForm"
+                class="flex flex-col gap-2"
+                (ngSubmit)="sendWish()">
+                <input
+                    required
+                    type="text"
+                    class="w-full rounded-lg border-2 bg-[#fde1b16b] p-2"
+                    [(ngModel)]="wish"
+                    name="wish"
+                    placeholder="Nhập lời chúc" />
+
+                <button
+                    class="cursor-pointer rounded-lg border-2 p-2"
+                    type="submit">
+                    <span
+                        class="w-full bg-gradient-to-r from-(--Primary) from-30% to-yellow-700 to-90% bg-clip-text text-center font-bold text-transparent">
+                        Gửi lời chúc
+                    </span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <section class="my-8 font-(family-name:--ovo)">
+        <hr class="m-auto my-4 w-2/3 border-2 opacity-30" />
+        <div class="mb-4 text-center text-4xl">Albums</div>
+
+        <div class="relative">
+            <div
+                #albumBeach
+                class="flex gap-2 overflow-x-auto overflow-y-hidden scroll-smooth p-2"
+                style="-webkit-overflow-scrolling: touch">
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01290.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01032.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01357.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01064.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01263.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01240.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01386.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01477.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01352.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01247.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01203.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU01190.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00949.jpg" />
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div
+                class="shake pointer-events-none absolute top-1/2 right-4 flex -translate-y-1/2 flex-col items-center">
+                <span
+                    class="font-(family-name:--ovo) text-xs font-bold whitespace-nowrap text-(--Primary) opacity-70">
+                    Scroll →
+                </span>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div
+                #albumIndoor
+                class="flex gap-2 overflow-x-auto overflow-y-hidden scroll-smooth p-2"
+                style="-webkit-overflow-scrolling: touch">
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00937.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00926.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00908.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00891.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00888.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00839.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00830.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00826.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00811.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00801.jpg" />
+                <img
+                    class="h-64 w-auto flex-shrink-0 rounded-lg object-cover shadow-md"
+                    src="/Wedding-Images/NTU00790.jpg" />
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div
+                class="shake pointer-events-none absolute top-1/2 right-4 flex -translate-y-1/2 flex-col items-center">
+                <span
+                    class="font-(family-name:--ovo) text-xs font-bold whitespace-nowrap text-(--Primary) opacity-70">
+                    Scroll →
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- TODO: Open it later -->
+    <!-- <app-invitation-card></app-invitation-card> -->
+
+    <section class="text-center">
+        <div class="my-8 font-(family-name:--thank-you) text-6xl">Thank you</div>
+        <div class="font-(family-name:--ovo) text-2xl">for being a part of our special day!</div>
+    </section>
+</div>
